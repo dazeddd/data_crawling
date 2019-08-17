@@ -1,15 +1,3 @@
-
-# for i in ['A', 'B', 'C']
-# dic['COMPANY']['{} Incorp'.format(i)] = 
-
-
-# def func2(a, **kargs):
-#     args['b'] = 50         # => **kargs는 딕셔너리 형으로 전달 되므로 값 변경 가능
-#     print( {a : args} )
-
-# func2( 'A Incorp', place='서울', people_count=30, phone_number='02-2345-2323', email='a@a.com')      # 10 {'b': 50, 'c': 30}
-
-
 from bs4 import BeautifulSoup
 
 html = '''
@@ -50,50 +38,13 @@ html = '''
 
 soup = BeautifulSoup(html, 'html.parser')
 trs = soup.select('table tr')
-# trd = soup.select('table tr td')
+dic = {}   
 
-for tr in trs:
-    head = tr.select('th')           ##### th 는 json의  key 값
-    d = tr.select('td')
-    
-    
+for i, tr in enumerate(trs):
+    th = tr.select('th')           
+    td = tr.select('td')
 
-
-# dic = 
-# {'회사' : [{ 'A사' : { '주소': '서울' , '직원수': '30명' , '전화번호': '02-2345-2323' , '대표메일': 'a@a.com',  }},
-# { 'B사' : {} },
-# { 'C사' : {} }]}
+   
 
 
-# {'회사' : {'A사'}}
-# { '주소': '서울' , '직원수': '30명' , '전화번호': '02-2345-2323' , '대표메일': 'a@a.com',  }
-
-
-
-companies = {}
-data = {}
-
-for i, tr in enumerate(trs):      ###필요없는 태그 제끼기 위해 enumerate 사용
-    if i == 0:
-        for j, th in enumerate
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ # {A사 : ['서울', '30명', '02-2345-2323', a@a.com ]},

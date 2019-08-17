@@ -5,12 +5,6 @@ url = "https://finance.naver.com/marketindex/exchangeList.nhn"
 html = requests.get(url)
 
 soup = BeautifulSoup(html.text, 'html.parser')
-
-
-
-
-
-
 trs = soup.select("body > div > table > tbody > tr")
 
 for tr in trs:
