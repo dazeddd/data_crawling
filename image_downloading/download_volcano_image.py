@@ -7,13 +7,12 @@ rngs = rng.split(" ")
 if len(rngs) < 2:
     print("Input Data Error!!")
     exit()
-
 startdt = rngs[0]
 enddt = rngs[1]
-print(startdt, enddt)
-url = url.format(startdt, enddt)
-print(url)
+
+url = url.format(startdt, enddt)  # 날짜로 url 커스터마이징;;
 
 saveFile = "./images/weather22.html"
 ur.urlretrieve(url, saveFile)
 print("OK!")
+

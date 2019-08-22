@@ -12,7 +12,7 @@ book = openpyxl.Workbook()
 sheet1 = book.active
 sheet1.title = "멜론 TOP100"
 
-with codecs.open('./meltop100.csv', 'r', 'utf-8') as meltop:
+with codecs.open('./meltop100.csv', 'r', 'utf-8') as meltop:        # csv 파일 읽어서
     reader = csv.reader(meltop, delimiter=',', quotechar='"')
 
     for i, row in enumerate(reader):

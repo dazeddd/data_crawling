@@ -29,45 +29,29 @@ html = '''
     </dl>
 '''
 
-col_names = {'국적': 'nation', '활동장르': 'act_genre', '데뷔': 'debut', '수상이력': 'award'}
+# col_names = {'국적': 'nation', '활동장르': 'act_genre', '데뷔': 'debut', '수상이력': 'award'}
 
 soup = BeautifulSoup(html, 'html.parser')
 
 dl = soup.find('dl')
-dts = []
-dds = []
+dt_list = []
+dd_list = []
 
-for d in dl:
-    if not d.name: continue
-
-    if d.name == 'dt':
-        dts.append(d.text)
-    else:                                   ## dd
-        span = d.select_one('span')
+for dts in dl:
+    if not dts.name: continue
+    
+    if dts.name == 'dt':
+        dt_list.append(dts.text)
+    else:                                   # 'dd' 인경우
+        span = dts.select_one('span')
         if span != None:
-            dds.append(span.next.strip())
-            
+            dd_list.append(span.next.strip())
         else:
-            dds.append(d.text)
-            
-            
-
-print(dts)
-print(dds)
-
-col = []
-
-for i in range(len(dts)):
-    col.append(col_names[dts[i]])
-
-print(col)
+            dd_list.append(dts.text)
 
 
-a = tuple(col)
-b = tuple(dds)
-# print(a,b)
-
-
+a = tuple(dt_list)
+b = tuple(dd_list)
 sql_insert = 'insert into Singer{} values{};'.format(a, b)
 print(sql_insert)
 
