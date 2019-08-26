@@ -30,7 +30,7 @@ trs = soup.select('div#tb_list table tbody tr[data-song-no]')
 Song = {}
 
 for tr in trs:
-    song_no = tr.attrs['data-song-no']                     ## 곡 번호
+    song_no = tr.attrs['data-song-no']                     ## 곡 번호, id 값?
     # title = tr.select_one('div.ellipsis.rank01 a').text    ## 곡 제목
     
     singers = tr.select('div.ellipsis.rank02 span a')
